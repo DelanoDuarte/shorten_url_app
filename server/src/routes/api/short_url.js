@@ -8,7 +8,7 @@ router.post("/short", (req, res) => {
     shortUrlService.short(body_content.url)
         .then(data => {
             res.status(201)
-            res.json({ "short_url": "http://localhost:5000/shortener/" + data.short_url, "long_url": data.long_url })
+            res.json({ "short_url": "http://localhost:5000/" + data.short_url, "long_url": data.long_url })
         })
         .catch(error => {
             console.log(error)

@@ -13,9 +13,9 @@ app.use(cors())
 app.use(bodyParser.json())
 
 // routes
-app.use("/shortener", require("./src/routes/api/short_url"))
+app.use("/", require("./src/routes/api/short_url"))
 
-app.get("/", (req, res) => {
+app.get("/app", (req, res) => {
     res.send({ "status": "Server UP" })
 })
 

@@ -1,6 +1,9 @@
 # Shorten URL App
 ### simple app to shorten your URL in case of share the URL on platforms with limited characters.
 
+## Demo
+![alt](demo/shorten_url_app.gif)
+
 ## Stack
 ### Backend
 - Node JS - 10.16.3
