@@ -3,9 +3,9 @@ const router = express.Router()
 
 const shortUrlService = require("../../services/url_shortener_service")
 
-router.get("/short", (req, res) => {
-    const url = req.query.url
-    shortUrlService.short(url)
+router.post("/short", (req, res) => {
+    const body_content = { ...req.body }
+    shortUrlService.short(body_content.url)
         .then(data => {
             res.status(201)
             res.json({ "short_url": "http://localhost:5000/shortener/" + data.short_url, "long_url": data.long_url })

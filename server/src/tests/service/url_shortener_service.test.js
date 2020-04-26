@@ -7,30 +7,23 @@ describe("short url service test", () => {
         return await ShortModel.sync({ force: true });
     });
 
-    it("should add a new short url on database", () => {
-        const encoded_url = shortenerUrlService.encode("https://www.google.com".length)
-        return shortenerUrlService.short("https://www.google.com")
+    it("should add a new short url on database", async () => {
+        return await shortenerUrlService.short("https://www.google.com")
             .then(data => {
-                const result = {
-                    short_url: encoded_url,
-                    long_url: "https://www.google.com"
-                }
-                expect({ "short_url": data.short_url, "long_url": data.long_url }).toStrictEqual(result)
+                expect(data).toHaveProperty("short_url")
             })
     })
 
     it("should find a short url by the short code", () => {
-        const encoded_url = shortenerUrlService.encode("https://www.google.com".length)
-        shortenerUrlService.short("https://www.google.com").then(data => { })
-
-        return shortenerUrlService.find_by_short_url(encoded_url)
+        shortenerUrlService.short("https://www.google.com")
             .then(data => {
-                const result = {
-                    short_url: encoded_url,
-                    long_url: "https://www.google.com"
-                }
-                expect({ "short_url": data.short_url, "long_url": data.long_url }).toStrictEqual(result)
+                return shortenerUrlService.find_by_short_url(data.short_url)
+                    .then(data => {
+                        expect(data).toHaveProperty("short_url")
+                        expect(data).toHaveProperty("long_url")
+                    })
             })
+
     })
 
 })

@@ -1,12 +1,16 @@
 const express = require("express")
 const app = express()
 const cors = require("cors")
+const bodyParser = require("body-parser")
 
 // database config
 require("./src/config/repository");
 
 //cors policy
 app.use(cors())
+
+//body parser
+app.use(bodyParser.json())
 
 // routes
 app.use("/shortener", require("./src/routes/api/short_url"))
