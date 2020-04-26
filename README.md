@@ -47,3 +47,8 @@ If you have nodemon installed in your environment, you can use for hot reload, u
 From the **server** folder you can also run both projects **frontend** and **backend**, using [concurrently](https://www.npmjs.com/package/concurrently), performing the following command:
 
 `npm run dev`
+
+### Run tests
+From the **server** folder, perform the following command to run unit tests:
+
+`npm test`
