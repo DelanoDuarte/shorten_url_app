@@ -25,7 +25,7 @@ module.exports = {
     encode(num) {
         let s = ""
         while (num > 0) {
-            s += ALPHABET[num % BASE]
+            s += ALPHABET[num % BASE] + Math.floor(10 + Math.random() * 90)
             num = parseInt(num / BASE, 10)
         }
         return s.split("").reverse().join("");
